@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculating Correlation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Computing Correlation</h1>
+        <form action="/correlation" method="post">
+            <select name="x_axis_column">
+                {% for column in columns %}
+                    {% if column == x_axis_column %}
+                        <option selected value="{{ column }}">{{ column }}</option>
+                    {% else %}
+                        <option value="{{ column }}">{{ column }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <select name="y_axis_column">
+                {% for column in columns %}
+                    {% if column == y_axis_column %}
+                        <option selected value="{{ column }}">{{ column }}</option>
+                    {% else %}
+                        <option value="{{ column }}">{{ column }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Calculate Correlation">
+        </form>
+        {% if corr %}
+            <h2>{{corr}}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
