@@ -16,7 +16,7 @@ def index():
             return redirect('/dashboard')
         else:
             error = "Only CSV files are allowed. Please upload a valid CSV file."
-    return render_template('frontend/templates/index.html', error= error)
+    return render_template('../../frontend/templates/index.html', error= error)
 
 @app.route('/dashboard', methods=['GET','POST'])
 def form():
@@ -30,7 +30,7 @@ def form():
             return render_template('dashboard.html', df=df.to_html() if df is not None else None)
         if action == 'calculate_correlation':
             return redirect('/correlation')
-    return render_template('frontend/templates/dashboard.html', df = None)
+    return render_template('../../frontend/templates/dashboard.html', df = None)
 
 
 @app.route('/charts', methods =['GET', 'POST'])
@@ -52,7 +52,7 @@ def charts():
             return render_template('bar_chart.html', labels=json.dumps(labels), values=json.dumps(values), df=df.to_html() if df is not None else None)
         elif chart_type == 'pie_chart':
             return render_template('pie_chart.html', labels=json.dumps(labels), values=json.dumps(values), df=df.to_html() if df is not None else None)
-    return render_template('frontend/templates/charts.html', columns=df.columns.to_list())
+    return render_template('../../frontend/templates/charts.html', columns=df.columns.to_list())
 
 @app.route('/correlation', methods =['GET','POST'])
 def correlation():
@@ -70,7 +70,7 @@ def correlation():
     else:
         x_axis_column = None
         y_axis_column = None # setting these so that the selected columns can be displayed in the same template if they were previously selected
-    return render_template('frontend/templates/correlation.html', columns = df.columns.to_list(), x_axis_column=x_axis_column, y_axis_column=y_axis_column, corr = corr)
+    return render_template('../../frontend/templates/correlation.html', columns = df.columns.to_list(), x_axis_column=x_axis_column, y_axis_column=y_axis_column, corr = corr)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
