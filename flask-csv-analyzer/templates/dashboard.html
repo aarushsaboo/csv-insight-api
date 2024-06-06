@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Action</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Action</h1>
+        <form action="/dashboard" method="post">
+            <input type="radio" name="action" value="display_dataframe" checked> Display DataFrame<br>
+            <input type="radio" name="action" value="display_charts"> Display Charts<br>
+            <input type="radio" name="action" value="calculate_correlation"> Calculate Correlation<br>
+            <input type="submit" value="Submit">
+        </form>
+        {% if df %}
+            <h2>Dataframe</h2>
+            {{ df | safe}}
+        {% endif %}
+    </div>
+
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

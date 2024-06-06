@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Chart Type</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Chart Type</h1>
+        <form action="/charts" method="post">
+            <select name="x_axis_column">
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <select name="y_axis_column">
+                {% for column in columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <select name="chart_type">
+                <option value="line_chart">Line Chart</option>
+                <option value="bar_chart">Bar Chart</option>
+                <option value="pie_chart">Pie Chart</option>
+                <!-- Add other chart types as needed -->
+            </select>
+            <input type="submit" value="Generate Chart">
+        </form>
+    </div>
+
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
