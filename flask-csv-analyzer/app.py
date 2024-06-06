@@ -16,7 +16,7 @@ def index():
             return redirect('/dashboard')
         else:
             error = "Only CSV files are allowed. Please upload a valid CSV file."
-    return render_template('frontend/templates//flaskindex.html', error= error)
+    return render_template('frontend/templates/index.html', error= error)
 
 @app.route('/dashboard', methods=['GET','POST'])
 def form():
