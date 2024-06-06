@@ -73,4 +73,4 @@ def correlation():
     return render_template('correlation.html', columns = df.columns.to_list(), x_axis_column=x_axis_column, y_axis_column=y_axis_column, corr = corr)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
