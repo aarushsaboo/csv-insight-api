@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect
 import pandas as pd
 import json
 
-app = Flask(__name__, template_folder='../frontend/templates')
+app = Flask(__name__, template_folder='../../frontend/templates')
 df = None
 
 @app.route('/', methods=['GET', 'POST'])
